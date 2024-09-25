@@ -47,12 +47,14 @@ function calculate(dTitle, inputV, Totaldiv) {
   const totalDonationAmount = parseInt(getElementById(Totaldiv).innerText);
   const donationValueInt = parseInt(donationInputValue);
 
-  if (isNaN(donationInputValue) || donationInputValue < 0) {
+  console.log(donationValueInt);
+
+  if (isNaN(donationValueInt) || donationInputValue < 0) {
     alert('Please Enter a Valid Number');
     return;
   }
 
-  if (donationCalculate() > donationValueInt) {
+  if (donationCalculate() >= donationValueInt) {
     const nResult = totalDonationAmount + donationValueInt;
     getElementById(Totaldiv).innerHTML = nResult;
 
@@ -62,6 +64,7 @@ function calculate(dTitle, inputV, Totaldiv) {
     historyCreate(donationValueInt, donationTitle);
 
     successPop.classList.remove('hidden');
+
     popUpTimeout();
 
     inputValue.value = '';
@@ -69,32 +72,3 @@ function calculate(dTitle, inputV, Totaldiv) {
     alert('insufficient Balance');
   }
 }
-
-// const titleNoakhali = getElementById('titleNoakhali').innerText;
-// const noakhaliDonationInputValue = getElementById('noakhaliInput');
-// const noakhaliDonationAmount = parseInt(getElementById('noakhaliDonationAmount').innerText);
-// const noakhaliInput = parseInt(GetElementValueById('noakhaliInput'));
-
-// if ( isNaN(noakhaliDonationInputValue.value) || noakhaliDonationInputValue.value<0) {
-//     alert("Please Enter a Valid Number")
-//     return
-// }
-
-// if (donationCalculate()>noakhaliInput) {
-
-//     const nResult = noakhaliDonationAmount + noakhaliInput;
-//     getElementById('noakhaliDonationAmount').innerHTML = nResult
-
-//     const lastMoney = donationCalculate() - noakhaliInput;
-//     getElementById('myTotalMoney').innerText = lastMoney;
-
-//     historyCreate(noakhaliInput, titleNoakhali);
-
-//     successPop.classList.remove('hidden')
-//     popUpTimeout()
-//     noakhaliDonationInputValue.value = '';
-
-// }
-// else{
-//     alert("insufficient Balance")
-// }
